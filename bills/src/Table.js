@@ -1,9 +1,9 @@
 import TableRow from "./TableRow"
 
-function Table(props) {
+function Table({transactionsData }) {
 
-    const tableRowArray = props.transactionsData.map( (transaction) => {
-        return <TableRow data={transaction}/>
+    const tableRowArray = transactionsData.map( (transaction, index) => {
+        return <TableRow key ={index} data={transaction}/>
     } )
 
     return (
