@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useState , useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import Table from './Table';
 import Form from './Form';
 import Search from './Search';
@@ -11,20 +11,22 @@ function App() {
 
   useEffect(() => {
     fetch("http://localhost:3000/transactions")
-    .then((r) => r.json())
-    .then((data) => {
-      // json(data)
-      console.log(data);
-      // transactions = [...data]
-      setTransactionsB([...data])
-    })
-  
+      .then((r) => r.json())
+      .then((data) => {
+        // json(data)
+        console.log(data);
+        // transactions = [...data]
+        setTransactionsB([...data])
+      })
+
   }, [])
+
   return (
     <div className="App">
       <p> HELLO WORLD</p>
-      <Search/>
-      <Form/>
+      <Form />
+      <Search />
+      <Table transactionsData={transactionsB} />
     </div>
   );
 }
