@@ -1,23 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useState , useEffect} from 'react';
+import Table from './Table';
+import Form from './Form';
+import Search from './Search';
 
 function App() {
+
+  // let transactionsA = [];
+  const [transactionsB, setTransactionsB] = useState([])
+
+  useEffect(() => {
+    fetch("http://localhost:3000/transactions")
+    .then((r) => r.json())
+    .then((data) => {
+      // json(data)
+      console.log(data);
+      // transactions = [...data]
+      setTransactionsB([...data])
+    })
+  
+  }, [])
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <p> HELLO WORLD</p>
+      <Search/>
+      <Form/>
     </div>
   );
 }
